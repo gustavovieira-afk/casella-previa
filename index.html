@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- PRÉVIA DE PROPOSTA feita por Gustavo Vieira. Não é o site oficial da Casella. -->
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#14100e">
+  <title>Casella | Rodízio de pizzas, sushis e buffet em Goiânia (prévia)</title>
+  <meta name="description" content="Rodízio de pizzas, sushis, buffet e sobremesas na Av. Perimetral Norte, Goiânia 2. Segunda a sábado, das 19h às 23h.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="image" href="img/g/hero.webp" imagesrcset="img/p/hero.webp 760w, img/g/hero.webp 1800w" imagesizes="100vw">
+  <style>
+    /* ===== Tokens: preto quente + terracota e creme do logo da Casella ===== */
+    :root {
+      --fundo: #14100e;
+      --superficie: #1d1714;
+      --superficie-2: #2a211c;
+      --texto: #f3e9da;
+      --texto-2: #c4b6a4;
+      --texto-3: #8e8273;
+      --linha: rgba(243, 233, 218, .1);
+      --linha-forte: rgba(243, 233, 218, .24);
+      --terracota: #b13a1f;
+      --terracota-hover: #962f17;
+      --dourado: #d6ae6c;
+      --fonte-titulo: "Cormorant Garamond", Georgia, serif;
+      --fonte: "Manrope", -apple-system, "Segoe UI", sans-serif;
+      --raio: 12px;
+      --transicao: 180ms ease;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; overflow-x: clip; scroll-padding-top: 76px; }
+    body { font-family: var(--fonte); font-size: 16px; background: var(--fundo); color: var(--texto); line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: clip; }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+    :focus-visible { outline: 2px solid var(--dourado); outline-offset: 3px; }
+    ::selection { background: rgba(177, 58, 31, .45); }
+    .container { width: 100%; max-width: 1180px; margin: 0 auto; padding: 0 clamp(16px, 4vw, 40px); }
+
+    h1, h2, h3 { font-family: var(--fonte-titulo); font-weight: 600; letter-spacing: -.01em; line-height: 1.04; }
+    h2 { font-size: clamp(2.2rem, 5vw, 3.6rem); }
+    .rotulo { display: inline-block; font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--dourado); margin-bottom: 14px; }
+    .secao { padding: clamp(72px, 10vw, 128px) 0; }
+    .secao__topo { max-width: 640px; margin-bottom: clamp(36px, 5vw, 56px); }
+    .secao__topo p { color: var(--texto-2); margin-top: 16px; font-size: 1.05rem; }
+
+    .previa { padding: 7px 16px; text-align: center; font-size: .72rem; color: var(--texto-2); background: var(--superficie-2); border-bottom: 1px solid var(--linha); }
+
+    /* fotos */
+    .foto { overflow: hidden; background: var(--superficie); border-radius: var(--raio); }
+    .foto img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* botões */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+      min-height: 52px; padding: 0 26px;
+      border: 1px solid transparent; border-radius: 999px;
+      font-weight: 700; font-size: .95rem; cursor: pointer; font-family: inherit;
+      transition: background var(--transicao), border-color var(--transicao), color var(--transicao);
+    }
+    .btn svg { width: 19px; height: 19px; flex: none; }
+    .btn--primario { background: var(--terracota); color: #fff; }
+    .btn--primario:hover { background: var(--terracota-hover); }
+    .btn--secundario { border-color: var(--linha-forte); color: var(--texto); background: rgba(20, 16, 14, .35); }
+    .btn--secundario:hover { border-color: var(--texto); }
+
+    /* ===== Header ===== */
+    .topo { position: sticky; top: 0; z-index: 50; background: rgba(20, 16, 14, .9); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--linha); }
+    .topo__in { display: flex; align-items: center; justify-content: space-between; gap: 20px; height: 72px; }
+    .marca { display: flex; flex-direction: column; align-items: center; line-height: 1; }
+    .marca__nome { font-family: var(--fonte-titulo); font-weight: 500; font-size: 1.85rem; letter-spacing: .06em; }
+    .marca__sub { font-family: var(--fonte-titulo); font-style: italic; font-size: .82rem; color: var(--texto-2); margin-top: 1px; letter-spacing: .02em; }
+    .menu { display: flex; gap: 30px; font-size: .9rem; font-weight: 600; color: var(--texto-2); }
+    .menu a:hover { color: var(--texto); }
+    .topo .btn { min-height: 44px; padding: 0 20px; font-size: .88rem; }
+    @media (max-width: 900px) { .menu { display: none; } }
+
+    /* ===== Hero ===== */
+    .hero { position: relative; min-height: min(88vh, 820px); display: flex; align-items: flex-end; isolation: isolate; }
+    .hero .hero__foto { position: absolute; inset: 0; z-index: -1; border-radius: 0; }
+    .hero__foto img { object-position: 60% 50%; }
+    .hero__foto::before { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(90deg, rgba(20,16,14,.92) 0%, rgba(20,16,14,.7) 38%, rgba(20,16,14,.1) 72%), linear-gradient(0deg, rgba(20,16,14,1) 0%, rgba(20,16,14,0) 35%); }
+    .hero__txt { padding: 120px 0 clamp(56px, 8vw, 96px); max-width: 640px; }
+    .hero h1 { font-size: clamp(2.9rem, 7.4vw, 5.6rem); }
+    .hero h1 em { font-style: italic; color: var(--dourado); font-weight: 500; }
+    .hero p { margin-top: 22px; font-size: clamp(1.02rem, 1.6vw, 1.15rem); color: var(--texto-2); max-width: 500px; }
+    .hero__acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 34px; }
+    .hero__dados { display: flex; flex-wrap: wrap; gap: 10px 28px; margin-top: 40px; padding-top: 24px; border-top: 1px solid var(--linha); font-size: .88rem; color: var(--texto-2); }
+    .hero__dados b { color: var(--texto); font-weight: 700; }
+    @media (max-width: 700px) {
+      .hero { min-height: min(92svh, 760px); }
+      .hero__foto::before { background: linear-gradient(0deg, rgba(20,16,14,1) 8%, rgba(20,16,14,.82) 48%, rgba(20,16,14,.25) 100%); }
+      .hero__acoes .btn { flex: 1 1 100%; }
+    }
+
+    /* ===== O que tem no rodízio ===== */
+    .tres { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .prato { display: flex; flex-direction: column; }
+    .prato .foto { aspect-ratio: 4 / 5; }
+    .prato h3 { font-size: 2rem; margin-top: 20px; }
+    .prato p { color: var(--texto-2); margin-top: 8px; font-size: .97rem; }
+    .extra { margin-top: 40px; padding: 22px 26px; border: 1px solid var(--linha); border-radius: var(--raio); display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 14px; color: var(--texto-2); }
+    .extra strong { color: var(--texto); font-family: var(--fonte-titulo); font-size: 1.5rem; font-weight: 600; }
+    @media (max-width: 860px) {
+      .tres { grid-template-columns: 1fr; gap: 40px; }
+      .prato .foto { aspect-ratio: 4 / 3; }
+    }
+
+    /* ===== Faixa do forno ===== */
+    .forno { position: relative; min-height: 460px; display: flex; align-items: center; isolation: isolate; }
+    .forno .foto { position: absolute; inset: 0; z-index: -1; border-radius: 0; }
+    .forno .foto::before { content: ""; position: absolute; inset: 0; z-index: 1; background: rgba(20, 16, 14, .55); }
+    .forno blockquote { font-family: var(--fonte-titulo); font-style: italic; font-weight: 500; font-size: clamp(2.2rem, 6vw, 4.4rem); line-height: 1.05; max-width: 820px; }
+    .forno cite { display: block; margin-top: 18px; font: 600 .82rem var(--fonte); font-style: normal; letter-spacing: .14em; text-transform: uppercase; color: var(--dourado); }
+
+    /* ===== Preços ===== */
+    .precos { background: var(--superficie); }
+    .precos__grade { display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 18px; }
+    .preco { padding: 32px 30px; border: 1px solid var(--linha); border-radius: var(--raio); background: var(--fundo); display: flex; flex-direction: column; }
+    .preco--destaque { border-color: var(--terracota); background: linear-gradient(180deg, rgba(177, 58, 31, .16), rgba(177, 58, 31, 0) 70%), var(--fundo); }
+    .preco__dia { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--texto-2); }
+    .preco__valor { font-family: var(--fonte-titulo); font-size: clamp(3.2rem, 6vw, 4.4rem); font-weight: 600; line-height: 1; margin-top: 16px; }
+    .preco__valor small { font-size: .38em; font-weight: 500; margin-right: 4px; vertical-align: .9em; }
+    .preco__valor--txt { font-size: 2.2rem; }
+    .preco__nota { color: var(--texto-2); margin-top: 12px; font-size: .95rem; }
+    .preco ul { list-style: none; margin-top: auto; padding-top: 24px; display: grid; gap: 8px; font-size: .92rem; color: var(--texto-2); }
+    .preco li { display: flex; gap: 10px; }
+    .preco li::before { content: ""; flex: none; width: 6px; height: 6px; border-radius: 50%; background: var(--dourado); margin-top: .6em; }
+    .precos__obs { margin-top: 22px; font-size: .82rem; color: var(--texto-3); }
+    @media (max-width: 900px) { .precos__grade { grid-template-columns: 1fr; } }
+
+    /* ===== Família ===== */
+    .familia__grade { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 80px); align-items: center; }
+    .familia__fotos { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .familia__fotos .foto:first-child { grid-row: span 2; aspect-ratio: auto; }
+    .familia__fotos .foto { aspect-ratio: 4 / 5; }
+    .familia__lista { list-style: none; display: grid; gap: 22px; margin-top: 30px; }
+    .familia__lista li { padding-left: 22px; border-left: 2px solid var(--terracota); }
+    .familia__lista strong { display: block; font-family: var(--fonte-titulo); font-size: 1.55rem; font-weight: 600; line-height: 1.15; }
+    .familia__lista span { color: var(--texto-2); font-size: .97rem; }
+    @media (max-width: 900px) { .familia__grade { grid-template-columns: 1fr; } .familia__fotos { order: 2; } }
+
+    /* ===== Aniversário ===== */
+    .niver { display: grid; grid-template-columns: 1fr 1.1fr; border: 1px solid var(--linha); border-radius: var(--raio); overflow: hidden; background: var(--superficie); }
+    .niver .foto { border-radius: 0; min-height: 420px; }
+    .niver .foto img { object-position: 50% 30%; }
+    .niver__txt { padding: clamp(32px, 5vw, 64px); display: flex; flex-direction: column; justify-content: center; }
+    .niver__txt h2 { font-size: clamp(2.2rem, 4.4vw, 3.2rem); }
+    .niver__txt p { color: var(--texto-2); margin: 16px 0 28px; }
+    .niver__txt .btn { align-self: flex-start; }
+    @media (max-width: 800px) { .niver { grid-template-columns: 1fr; } .niver .foto { min-height: 0; aspect-ratio: 4 / 3; } }
+
+    /* ===== Galeria ===== */
+    .galeria { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 12px; }
+    .galeria .foto:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .galeria .foto:nth-child(4) { grid-column: span 2; }
+    .galeria__leg { margin-top: 18px; font-size: .85rem; color: var(--texto-3); }
+    .galeria__leg a { color: var(--dourado); }
+    @media (max-width: 760px) {
+      .galeria { grid-template-columns: 1fr 1fr; grid-auto-rows: 170px; }
+      .galeria .foto:nth-child(1) { grid-column: span 2; }
+    }
+
+    /* ===== Reserva ===== */
+    .passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; counter-reset: passo; }
+    .passo { padding: 28px; border-top: 1px solid var(--linha-forte); }
+    .passo::before { counter-increment: passo; content: "0" counter(passo); font-family: var(--fonte-titulo); font-size: 2.6rem; color: var(--dourado); line-height: 1; }
+    .passo h3 { font-size: 1.6rem; margin-top: 14px; }
+    .passo p { color: var(--texto-2); margin-top: 6px; font-size: .96rem; }
+    .reserva__acoes { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+    @media (max-width: 800px) { .passos { grid-template-columns: 1fr; } .passo { padding: 24px 0; } }
+
+    /* ===== Contato ===== */
+    .contato { background: var(--superficie); }
+    .contato__grade { display: grid; grid-template-columns: 1fr 1.25fr; gap: clamp(28px, 5vw, 64px); align-items: stretch; }
+    .info { display: grid; gap: 26px; align-content: start; }
+    .info dt { font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dourado); }
+    .info dd { margin-top: 6px; font-size: 1.05rem; }
+    .info dd a { border-bottom: 1px solid var(--linha-forte); }
+    .info dd a:hover { border-color: var(--texto); }
+    .mapa { border-radius: var(--raio); overflow: hidden; min-height: 380px; border: 1px solid var(--linha); background: var(--fundo); }
+    .mapa iframe { width: 100%; height: 100%; min-height: 380px; border: 0; filter: grayscale(.35) contrast(1.05); }
+    @media (max-width: 860px) { .contato__grade { grid-template-columns: 1fr; } }
+
+    /* ===== Rodapé ===== */
+    .rodape { padding: 48px 0 110px; border-top: 1px solid var(--linha); font-size: .85rem; color: var(--texto-3); }
+    .rodape__in { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 20px; }
+    .rodape .marca { align-items: flex-start; }
+
+    /* ===== Barra fixa no celular ===== */
+    .barra-mobile { display: none; }
+    @media (max-width: 760px) {
+      .barra-mobile { display: flex; gap: 10px; position: fixed; left: 0; right: 0; bottom: 0; z-index: 60; padding: 10px 16px calc(10px + env(safe-area-inset-bottom)); background: rgba(20, 16, 14, .94); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-top: 1px solid var(--linha); }
+      .barra-mobile .btn { flex: 1; min-height: 48px; }
+      .topo .btn { display: none; }
+    }
+
+    /* aviso da prévia */
+    .aviso { position: fixed; left: 50%; bottom: 90px; z-index: 10001; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; max-width: calc(100% - 32px); padding: 12px 18px; border-radius: 10px; background: var(--texto); color: var(--fundo); font-size: .88rem; font-weight: 600; box-shadow: 0 10px 30px rgba(0, 0, 0, .4); transition: opacity 200ms ease, transform 200ms ease; }
+    .aviso.ativo { opacity: 1; transform: translate(-50%, 0); }
+
+    /* entrada suave */
+    .surge { opacity: 0; transform: translateY(18px); transition: opacity 600ms ease, transform 600ms ease; }
+    .surge.visivel { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .surge { opacity: 1; transform: none; transition: none; } }
+  </style>
+  <link rel="stylesheet" href="marca-dagua.css">
+</head>
+<body>
+  <div class="previa">Prévia de proposta criada por Gustavo Vieira para a Casella. Não é o site oficial.</div>
+
+  <header class="topo">
+    <div class="container topo__in">
+      <a href="#inicio" class="marca" aria-label="Casella, início">
+        <span class="marca__nome">CASELLA</span>
+        <span class="marca__sub">a sua casa de pizza</span>
+      </a>
+      <nav class="menu" aria-label="Seções">
+        <a href="#rodizio">O rodízio</a>
+        <a href="#precos">Preços</a>
+        <a href="#familia">Família</a>
+        <a href="#contato">Como chegar</a>
+      </nav>
+      <a href="#reserva" class="btn btn--primario">Reservar mesa</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section class="hero" id="inicio">
+      <div class="foto hero__foto">
+        <img src="img/g/hero.webp" srcset="img/p/hero.webp 760w, img/g/hero.webp 1800w" sizes="100vw" alt="Pizza assando no forno a lenha, com as chamas ao fundo" fetchpriority="high">
+      </div>
+      <div class="container">
+        <div class="hero__txt">
+          <span class="rotulo">Rodízio · Goiânia 2</span>
+          <h1>Pizza, sushi e buffet <em>no mesmo jantar.</em></h1>
+          <p>Rodízio completo de segunda a sábado, das 19h às 23h, na Avenida Perimetral Norte. Pizza saindo do forno a noite toda, sushi à vontade, buffet quente e sobremesas.</p>
+          <div class="hero__acoes">
+            <a href="#reserva" class="btn btn--primario" data-whats>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2Zm0 18.2a8.2 8.2 0 0 1-4.2-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2Zm4.5-6.1c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1l-.8 1c-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.2-.4.2-.4.7-1.3.1-.2 0-.3 0-.4l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5a1 1 0 0 0-.7.3 3 3 0 0 0-.9 2.2 5.2 5.2 0 0 0 1.1 2.7 11.8 11.8 0 0 0 4.5 4c1.7.7 2.3.8 3.2.6.5-.1 1.5-.6 1.8-1.2.2-.6.2-1.1.1-1.2l-.5-.3Z"/></svg>
+              Reservar pelo WhatsApp
+            </a>
+            <a href="#precos" class="btn btn--secundario">Ver preços</a>
+          </div>
+          <div class="hero__dados">
+            <span><b>4,1</b> no Google · mais de 4 mil avaliações</span>
+            <span><b>124 mil</b> seguidores no Instagram</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- O RODÍZIO -->
+    <section class="secao" id="rodizio">
+      <div class="container">
+        <div class="secao__topo surge">
+          <span class="rotulo">O rodízio</span>
+          <h2>Um preço só. Três cozinhas na mesa.</h2>
+          <p>No Casella você não precisa escolher entre a pizza e o japonês. Está tudo incluído no rodízio, e o garçom passa até você dizer chega.</p>
+        </div>
+        <div class="tres">
+          <article class="prato surge">
+            <div class="foto"><img src="img/p/pizza.webp" srcset="img/p/pizza.webp 760w, img/g/pizza.webp 1800w" sizes="(max-width: 860px) 100vw, 33vw" alt="Fatia de pizza sendo servida, com o queijo derretendo" loading="lazy"></div>
+            <h3>Pizzas</h3>
+            <p>Sabores salgados e doces saindo do forno a noite toda e passando de mesa em mesa. É só pegar a próxima fatia.</p>
+          </article>
+          <article class="prato surge">
+            <div class="foto"><img src="img/casa/sushi-bar.jpg" alt="Bancada de sushis do Casella com dezenas de bandejas montadas" loading="lazy"></div>
+            <h3>Sushis</h3>
+            <p>Bancada montada a noite toda com sushis e sashimis variados. A foto é da própria bancada da casa.</p>
+          </article>
+          <article class="prato surge">
+            <div class="foto"><img src="img/p/buffet.webp" srcset="img/p/buffet.webp 760w, img/g/buffet.webp 1800w" sizes="(max-width: 860px) 100vw, 33vw" alt="Réchauds de buffet com pratos quentes" loading="lazy"></div>
+            <h3>Buffet</h3>
+            <p>Carnes, acompanhamentos e saladas para quem gosta de montar o próprio prato entre uma pizza e outra.</p>
+          </article>
+        </div>
+        <div class="extra surge">
+          <strong>E ainda tem sobremesa.</strong>
+          <span>As sobremesas também estão inclusas no valor do rodízio.</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAIXA FORNO -->
+    <section class="forno">
+      <div class="foto"><img src="img/p/forno.webp" srcset="img/p/forno.webp 760w, img/g/forno.webp 1800w" sizes="100vw" alt="Pizzas assando no forno a lenha" loading="lazy"></div>
+      <div class="container">
+        <blockquote class="surge">“Às vezes a gente só precisa de um rodízio.”<cite>Casella · sua casa de pizza</cite></blockquote>
+      </div>
+    </section>
+
+    <!-- PREÇOS -->
+    <section class="secao precos" id="precos">
+      <div class="container">
+        <div class="secao__topo surge">
+          <span class="rotulo">Preços</span>
+          <h2>Quanto custa o rodízio</h2>
+          <p>Valor por pessoa, com pizzas, sushis, buffet e sobremesas inclusos.</p>
+        </div>
+        <div class="precos__grade">
+          <div class="preco preco--destaque surge">
+            <span class="preco__dia">Segunda a quinta</span>
+            <div class="preco__valor"><small>R$</small>49,90</div>
+            <p class="preco__nota">por pessoa</p>
+            <ul>
+              <li>Rodízio completo: pizzas, sushis e buffet</li>
+              <li>Sobremesas inclusas</li>
+              <li>Das 19h às 23h</li>
+            </ul>
+          </div>
+          <div class="preco surge">
+            <span class="preco__dia">Sexta e sábado</span>
+            <div class="preco__valor preco__valor--txt">Consulte</div>
+            <p class="preco__nota">Valor de fim de semana informado na reserva.</p>
+            <ul>
+              <li>Mesmo rodízio completo</li>
+              <li>Dias mais cheios: vale reservar</li>
+            </ul>
+          </div>
+          <div class="preco surge">
+            <span class="preco__dia">Crianças</span>
+            <div class="preco__valor"><small>R$</small>9,90</div>
+            <p class="preco__nota">de 6 a 10 anos, no mês das crianças</p>
+            <ul>
+              <li>Até 5 anos não paga</li>
+              <li>Brinquedoteca com monitora</li>
+            </ul>
+          </div>
+        </div>
+        <p class="precos__obs surge">Valores divulgados pela casa em outubro de 2026. Podem mudar sem aviso; confirme na reserva.</p>
+      </div>
+    </section>
+
+    <!-- FAMÍLIA -->
+    <section class="secao" id="familia">
+      <div class="container familia__grade">
+        <div class="familia__fotos surge">
+          <div class="foto"><img src="img/casa/brinquedoteca.jpg" alt="Criança jogando fliperama na brinquedoteca do Casella" loading="lazy"></div>
+          <div class="foto"><img src="img/casa/personagens.jpg" alt="Personagem fantasiado abraçando crianças no salão" loading="lazy"></div>
+          <div class="foto"><img src="img/casa/pizza-casa.jpg" alt="Cliente mostrando uma pizza recém-servida" loading="lazy"></div>
+        </div>
+        <div class="surge">
+          <span class="rotulo">Para a família</span>
+          <h2>Os pais jantam com calma. As crianças nem querem ir embora.</h2>
+          <ul class="familia__lista">
+            <li><strong>Brinquedoteca com monitora</strong><span>Fliperamas, jogos e espaço para brincar enquanto a mesa aproveita o rodízio.</span></li>
+            <li><strong>Personagens no salão</strong><span>Em datas especiais, como o mês das crianças, os personagens favoritos visitam as mesas.</span></li>
+            <li><strong>Criança pequena não paga</strong><span>Até 5 anos, o rodízio é por conta da casa.</span></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ANIVERSÁRIO -->
+    <section class="secao" style="padding-top: 0">
+      <div class="container">
+        <div class="niver surge">
+          <div class="foto"><img src="img/casa/aniversario.jpg" alt="Aniversariante segurando a sobremesa com vela de faísca" loading="lazy"></div>
+          <div class="niver__txt">
+            <span class="rotulo">Aniversariante</span>
+            <h2>Faz aniversário? Comemora aqui.</h2>
+            <p>O Casella tem condição especial para o aniversariante. Chame no WhatsApp, diga quantas pessoas vêm e a gente separa a mesa.</p>
+            <a href="#reserva" class="btn btn--primario" data-whats>Reservar meu aniversário</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- GALERIA -->
+    <section class="secao" style="padding-top: 0" id="galeria">
+      <div class="container">
+        <div class="secao__topo surge">
+          <span class="rotulo">Na casa</span>
+          <h2>Uma noite no Casella</h2>
+        </div>
+        <div class="galeria surge">
+          <div class="foto"><img src="img/casa/salao.jpg" alt="Salão do Casella com a bancada de sushis em primeiro plano" loading="lazy" style="object-position: 50% 35%"></div>
+          <div class="foto"><img src="img/casa/pizza-calabresa.jpg" alt="Pizza de calabresa com cebola" loading="lazy"></div>
+          <div class="foto"><img src="img/casa/fogo.jpg" alt="Lenha queimando no forno" loading="lazy"></div>
+          <div class="foto"><img src="img/p/pizza2.webp" srcset="img/p/pizza2.webp 760w, img/g/pizza2.webp 1800w" sizes="(max-width: 760px) 100vw, 50vw" alt="Pizza com presunto cru e manjericão sobre tábua de madeira" loading="lazy" style="object-position: 50% 45%"></div>
+        </div>
+        <p class="galeria__leg">Mais fotos e novidades no <a href="https://www.instagram.com/casellapizzariarodizio/" target="_blank" rel="noopener">@casellapizzariarodizio</a></p>
+      </div>
+    </section>
+
+    <!-- RESERVA -->
+    <section class="secao precos" id="reserva">
+      <div class="container">
+        <div class="secao__topo surge">
+          <span class="rotulo">Reservas</span>
+          <h2>Reserve e chegue sem fila</h2>
+          <p>Reserva não é obrigatória, mas nas noites mais cheias ela evita espera na porta.</p>
+        </div>
+        <div class="passos">
+          <div class="passo surge"><h3>Chame no WhatsApp</h3><p>Use um dos dois números de reserva abaixo.</p></div>
+          <div class="passo surge"><h3>Diga dia e quantas pessoas</h3><p>Se for aniversário ou tiver criança, avise que a gente prepara a mesa.</p></div>
+          <div class="passo surge"><h3>É só chegar</h3><p>Seu nome fica na lista. Das 19h às 23h, de segunda a sábado.</p></div>
+        </div>
+        <div class="reserva__acoes surge">
+          <a href="#reserva" class="btn btn--primario" data-whats>Reservar: (62) 99559-8424</a>
+          <a href="#reserva" class="btn btn--secundario" data-whats>Reservar: (62) 98214-7706</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section class="secao" id="contato">
+      <div class="container contato__grade">
+        <div class="surge">
+          <span class="rotulo">Como chegar</span>
+          <h2 style="margin-bottom: 32px">Casella, Goiânia 2</h2>
+          <dl class="info">
+            <div><dt>Endereço</dt><dd>Av. Perimetral Norte, Qd. 32, Lt. 20, nº 11.403<br>Setor Goiânia 2, Goiânia (GO)</dd></div>
+            <div><dt>Horário</dt><dd>Segunda a sábado, das 19h às 23h<br>Domingo fechado</dd></div>
+            <div><dt>WhatsApp para reservas</dt><dd>(62) 99559-8424 · (62) 98214-7706</dd></div>
+            <div><dt>Instagram</dt><dd><a href="https://www.instagram.com/casellapizzariarodizio/" target="_blank" rel="noopener">@casellapizzariarodizio</a></dd></div>
+          </dl>
+          <div class="reserva__acoes">
+            <a class="btn btn--secundario" href="https://www.google.com/maps/place/Casella+Rod%C3%ADzio+de+Pizzas./@-16.6235884,-49.2496215,17z/data=!4m6!3m5!1s0x935ef3002bb5d317:0x21a7534980c805fa!8m2!3d-16.6235884!4d-49.2496215!16s%2Fg%2F11qn7k5xvy" target="_blank" rel="noopener">Abrir no Google Maps</a>
+          </div>
+        </div>
+        <div class="mapa surge">
+          <iframe title="Mapa do Casella na Av. Perimetral Norte" src="https://www.google.com/maps?q=-16.6235884,-49.2496215&z=16&hl=pt-BR&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <div class="container rodape__in">
+      <div class="marca">
+        <span class="marca__nome">CASELLA</span>
+        <span class="marca__sub">a sua casa de pizza</span>
+      </div>
+      <span>Proposta confidencial desenvolvida por Gustavo Vieira. Reprodução não autorizada.</span>
+    </div>
+  </footer>
+
+  <div class="barra-mobile">
+    <a href="#reserva" class="btn btn--primario" data-whats>Reservar</a>
+    <a href="#precos" class="btn btn--secundario">Preços</a>
+  </div>
+
+  <div class="aviso" role="status" aria-live="polite"></div>
+
+  <script>
+    // Prévia: os botões de WhatsApp ainda não abrem a conversa real da casa.
+    (function () {
+      var aviso = document.querySelector(".aviso"), t;
+      document.querySelectorAll("[data-whats]").forEach(function (b) {
+        b.addEventListener("click", function (e) {
+          e.preventDefault();
+          aviso.textContent = "Prévia: na versão final este botão abre o WhatsApp de reservas do Casella.";
+          aviso.classList.add("ativo");
+          clearTimeout(t); t = setTimeout(function () { aviso.classList.remove("ativo"); }, 3200);
+        });
+      });
+
+      // entrada suave das seções
+      var els = document.querySelectorAll(".surge");
+      if (!("IntersectionObserver" in window)) { els.forEach(function (el) { el.classList.add("visivel"); }); return; }
+      var io = new IntersectionObserver(function (entradas) {
+        entradas.forEach(function (en) { if (en.isIntersecting) { en.target.classList.add("visivel"); io.unobserve(en.target); } });
+      }, { rootMargin: "0px 0px -8% 0px" });
+      els.forEach(function (el) { io.observe(el); });
+      // garantia: nada fica escondido se o observador falhar
+      window.addEventListener("load", function () { setTimeout(function () { els.forEach(function (el) { el.classList.add("visivel"); }); }, 2500); });
+    })();
+  </script>
+  <script src="marca-dagua.js"></script>
+</body>
+</html>
